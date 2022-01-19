@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- leaflet css link  -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+
+    <title>geojson vector tile</title>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        width: 100%;
+        height: 100vh;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+  </body>
+</html>
+
+<!-- leaflet js link  -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+<!-- leaflet geojson vt  -->
+<script src="https://unpkg.com/geojson-vt@3.2.0/geojson-vt.js"></script>
+<script src="leaflet-geojson-vt.js"></script>
+
+<!-- citylots data  -->
+<script src="./amsterdamData.js"></script>
+
+
+<script>
+  var map = L.map("map").setView([52.3512,4.9299], 13);
+
+  var osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  });
+
+  osm.addTo(map);
+
+  var options = {
+  maxZoom: 20,
+  tolerance: 3,
+  debug: 0,
+  style: {
+    fillColor: "rgba(22, 122, 116, 0.3)",
+    color: "rgba(254, 200, 19, 0.3)",
+  },
+};
+var vtLayer = L.geoJson.vt(data, options).addTo(map);
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" />
+    <title>D3 visualisatie</title>
+</head>
+    <h1>hoi</h1>
+<body>
+  
+    <script src="index.js" type="module"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaflet GeoJSON Example</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
+    <style type="text/css">
+        .leaflet-container{background-color:#c5e8ff;}
+    </style>
+    <!-- <link href="style.css" rel="stylesheet" /> -->
+</head>
+
+<body>
+    <div id="map" style="width: 600px; height: 400px"></div>
+
+    <!-- <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script> -->
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+    <script src="index.js" type="module"></script>
+    <script src="leaflet.js"></script>
+    <!-- <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+        var myGeoJSONPath = './data.geo.json';
+        var myCustomStyle = {
+            stroke: false,
+            fill: true,
+            fillColor: '#fffff',
+            fillOpacity: 1
+        }
+        $.getJSON(myGeoJSONPath,function(data){
+            var map = L.map('map').setView([5.065863419011958,52.28113988466717], 4);
+
+            L.geoJson(data, {
+                clickable: false,
+                style: myCustomStyle
+            }).addTo(map);
+        })
+    </script> -->
+</body>
+</html>
+
+                

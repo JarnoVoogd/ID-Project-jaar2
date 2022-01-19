@@ -1,0 +1,20 @@
+{
+  "name": "id-project",
+  "version": "1.0.0",
+  "description": "ID project ",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "run",
+    "start": "node --experimental-json-modules index.js"
+  },
+  "author": "J Voogd",
+  "license": "ISC",
+  "dependencies": {
+    "d3": "^7.3.0",
+    "leaflet": "^1.7.1",
+    "node-fetch": "^3.1.0",
+    "topojson": "^3.0.2",
+    "topojson-server": "^3.0.1"
+  }
+}

@@ -1,0 +1,57 @@
+<!-- <html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>D3 World Map</title>
+    <style>
+    path {
+        stroke: rgb(255, 0, 0);
+        stroke-width: 0.5px;
+        fill: black;
+    }
+    </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://d3js.org/topojson.v3.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+const width = 1500;
+const height = 1100;
+const svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+ 
+const projection = d3.geoMercator()
+    .translate([width / 2, height / 2]) // translate to center of screen
+    .scale([1000]); // scale things down so see entire US
+ 
+const path = d3.geoPath().projection(projection);
+ 
+d3.json("./custom.geo.json", function(error, uState) {
+if (error) throw error;
+    svg.selectAll('path')
+        .data(uState.features)
+        .enter()
+        .append('path')
+        .attr("d", path)
+});
+ 
+</script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" />
+    <title>D3 visualisatie</title>
+</head>
+    <h1>hoi</h1>
+<body>
+  
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="index.js" type="module"></script>
+</body>
+</html>
