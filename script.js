@@ -105,7 +105,8 @@ console.log(leaflet);
 var map = L.map("kaart").setView([52.3546,4.9039], 12);
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
+    maxZoom: 15,
+    minZoom: 11,
     id: 'voegdoe/ckyln76g82hnw15ql1m059kqh',
     tileSize: 512,
     zoomOffset: -1,
@@ -160,7 +161,7 @@ function createBorder(e) {
 
   layer.setStyle({
       weight: 5,
-      color: '#666',
+      color: '#FEC813',
       dashArray: '',
       fillOpacity: 0.7
   });
@@ -212,7 +213,7 @@ info.onAdd = function (map) {
 info.update = function (props) {
     this._div.innerHTML = '<h4>Bevolkingsdichtheid per wijk</h4>' +  (props ?
         '<b>' + props.Buurtnaam + '</b><br />' + props.Oppervlakte_m2 + ' people / mi<sup>2</sup>'
-        : 'Hover over a state');
+        : 'Hover over een buurt');
 };
 
 info.addTo(map);
@@ -244,3 +245,154 @@ legend.onAdd = function (map) {
 };
 
 legend.addTo(map);
+
+
+
+
+
+
+
+
+// var map1 = L.map("kaart1").setView([52.3546,4.9039], 12);
+// L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+//     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+//     maxZoom: 15,
+//     // minZoom: 11,
+//     id: 'voegdoe/ckyln76g82hnw15ql1m059kqh',
+//     tileSize: 512,
+//     zoomOffset: -1,
+//     accessToken: 'pk.eyJ1Ijoidm9lZ2RvZSIsImEiOiJja3lrOHNkOWgyYzg5Mm5xaGUyZzNjaTBrIn0.ks4WYqbTFNJOrr8TQj8shw'
+// }).addTo(map1);
+
+
+// // geoJSON toevoegen aan de kaart
+// L.geoJSON(adamdata1).addTo(map1)
+
+
+// /*=========================================
+
+// STYLING 
+
+// =========================================*/
+
+// // Variabele die gebruikt gaat worden voor de styling 
+// let geojson1;
+
+// // Schaal voor de kleur adhv data
+// function getColor1(d1) {
+//   return d1 > 600000 ? '#003330' : //'#800026' :
+//          d1 > 500000  ? '#008f83' : //'#BD0026' :
+//          d1 > 400000  ? '#00d1c0' : //'#E31A1C' :
+//          d1 > 300000  ? '#14ffeb' : //'#FC4E2A' :
+//          d1 > 200000   ? '#57fff1' : //'#FD8D3C' : 
+//          d1 > 100000   ? '#99fff7' : //'#FEB24C' : hahaha
+//          d1 > 50000   ? '#dbfffc' : //'#FED976' :
+//                     '#ffffff';
+// }
+
+// // Functie die de stijl van de kaart definieert
+// function style1(feature1) {
+//   return {
+//       fillColor: getColor1(feature1.properties.Oppervlakte_m2),
+//       weight: 2,
+//       opacity: 1,
+//       color: 'white',
+//       dashArray: '3',
+//       fillOpacity: 0.5
+//   };
+// }
+
+// // De nieuwe styling toevoegen aan de geoJSON
+// L.geoJSON(adamdata1, {style: style1}).addTo(map1);
+
+// // Functie voor "mouseOver", er wordt een border gecreerd rondom de buurt waarover je hovered
+// // De border wordt naar voren gebracht zodat het beter te zien is, behalve in verouderde browsers
+// function createBorder1(e) {
+//   var layer1 = e.target;
+
+//   layer1.setStyle({
+//       weight: 5,
+//       color: '#FEC813',
+//       dashArray: '',
+//       fillOpacity: 0.7
+//   });
+
+//   if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+//       layer1.bringToFront();
+//   }
+
+//   info1.update(layer1.feature.properties);
+// }
+
+// // In deze functie wordt de border gereset, deze functie zal voor "mouseOut" gebruikt worden
+// function removeBorder1(e) {
+//   geojson1.resetStyle(e.target);
+//   info1.update();
+// }
+
+// // Deze functie zorgt ervoor dat er ingezoomd wordt op het target, deze zal voor "click" gebruikt worden
+// function zoomToClick1(e) {
+//   map1.fitBounds(e.target.getBounds());
+// }
+
+// // Hier koppelen we de vorige functies aan eventListeners zodat elke functie uitgevoerd wordt wanneer nodig
+// function onEachFeature1(feature, layer1) {
+//   layer1.on({
+//       mouseover: createBorder1,
+//       mouseout: removeBorder1,
+//       click: zoomToClick1
+//   });
+// }
+
+// // Hier wordt de benodigde styling daadwerkelijk toegevoegd aan de data
+// geojson1 = L.geoJSON(adamdata1, {
+//   style: style,
+//   onEachFeature: onEachFeature1
+// }).addTo(map1);
+
+
+
+// var info1 = L.control();
+
+// info1.onAdd = function (map1) {
+//     this._div = L.DomUtil.create('div', 'info'); // create a div with a class "info"
+//     this.update();
+//     return this._div;
+// };
+
+// // method that we will use to update the control based on feature properties passed
+// info1.update = function (props1) {
+//     this._div.innerHTML = '<h4>Bevolkingsdichtheid per wijk</h4>' +  (props1 ?
+//         '<b>' + props1.Buurtnaam + '</b><br />' + props1.Oppervlakte_m2 + ' people / mi<sup>2</sup>'
+//         : 'Hover over een buurt');
+// };
+
+// info1.addTo(map1);
+
+
+// /*=========================================
+
+// LEGENDA
+
+// =========================================*/
+
+
+// var legend1 = L.control({position: 'bottomright'});
+
+// legend1.onAdd = function (map1) {
+
+//     var div = L.DomUtil.create('div', 'info legend'),
+//         grades1  = [50000, 100000, 200000, 300000, 400000, 600000]
+//         labels = [];
+
+//     // loop through our density intervals and generate a label with a colored square for each interval
+//     for (var i = 0; i < grades.length; i++) {
+//         div.innerHTML +=
+//             '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+//             grades1[i] + (grades1[i + 1] ? '&ndash;' + grades1[i + 1] + '<br>' : '+');
+//     }
+
+//     return div;
+// };
+
+// legend1.addTo(map1);
